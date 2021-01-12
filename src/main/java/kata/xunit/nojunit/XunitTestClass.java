@@ -1,19 +1,24 @@
 package kata.xunit.nojunit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class XunitTestClass {
-    public HashMap<String, Runnable> testMethods = new HashMap<>();
+    public List<XunitTestMethod> testMethodList = new ArrayList<>();
 
     public void registerTestMethod(String methodName, Runnable method) {
-        testMethods.put(methodName, method);
+        testMethodList.add(new XunitTestMethod(methodName, method));
     }
 
     public void run() {
-        for (Map.Entry<String, Runnable> entry : testMethods.entrySet()) {
-            Runnable method = entry.getValue();
-            method.run();
+        for (XunitTestMethod method: testMethodList) {
+            try {
+                method.getMethod().run();
+            } catch (RuntimeException e) {
+                method.setRunStatus(false);
+            }
         }
     }
 }

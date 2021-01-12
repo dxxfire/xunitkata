@@ -11,26 +11,33 @@ public class Step1Test extends XunitTestClass {
         System.out.println("second_test_method run");
     }
 
+    @Override
+    public void run() {
+        test2(this);
+        test3(this);
+        super.run();
+    }
+
     public static void main(String[] args) {
         Step1Test step1Test = new Step1Test();
-        test1(step1Test);
+//        test1(step1Test);
         test2(step1Test);
         test3(step1Test);
         step1Test.run();
     }
 
-    public static void test1(Step1Test testClass) {
-        assertAll(() -> assertEquals(0, testClass.testMethods.size()));
-    }
+//    public static void test1(Step1Test testClass) {
+//        assertAll(() -> assertEquals(0, testClass.testMethods.size()));
+//    }
 
     public static void test2(Step1Test testClass) {
         testClass.registerTestMethod("first_test_method", testClass::first_test_method);
-        assertAll(() -> assertEquals(1, testClass.testMethods.size()));
+//        assertAll(() -> assertEquals(1, testClass.testMethods.size()));
     }
 
     public static void test3(Step1Test testClass) {
         testClass.registerTestMethod("second_test_method", testClass::second_test_method);
-        assertAll(() -> assertEquals(2, testClass.testMethods.size()));
+//        assertAll(() -> assertEquals(2, testClass.testMethods.size()));
     }
 
 }
