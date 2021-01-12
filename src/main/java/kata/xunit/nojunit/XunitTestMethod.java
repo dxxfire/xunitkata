@@ -6,34 +6,31 @@ public class XunitTestMethod {
     private String name;
     private Runnable method;
     private boolean runStatus = true;
+    private String errorMsg;
 
     public XunitTestMethod(String name, Runnable method) {
         this.name = name;
         this.method = method;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Runnable getMethod() {
         return method;
     }
 
-    public void setMethod(Runnable method) {
-        this.method = method;
-    }
-
-    public boolean isRunStatus() {
+    public boolean getRunStatus() {
         return runStatus;
     }
 
     public void setRunStatus(boolean runStatus) {
         this.runStatus = runStatus;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
     @Override

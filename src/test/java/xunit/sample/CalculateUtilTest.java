@@ -1,7 +1,6 @@
 package xunit.sample;
 
 import kata.xunit.nojunit.XunitTestClass;
-import kata.xunit.nojunit.XunitTestMethod;
 
 public class CalculateUtilTest extends XunitTestClass {
 

@@ -11,7 +11,8 @@ public class Step2Test {
         test.run();
         XunitTestMethod method1 =  test.testMethodList.get(0);
         XunitTestMethod method2 =  test.testMethodList.get(1);
-        assertAll(() -> assertEquals(false, method1.isRunStatus()));
-        assertAll(() -> assertEquals(true, method2.isRunStatus()));
+        assertAll(() -> assertEquals(false, method1.getRunStatus()));
+        assertAll(() -> assertEquals("Unexpected value", method1.getErrorMsg()));
+        assertAll(() -> assertEquals(true, method2.getRunStatus()));
     }
 }

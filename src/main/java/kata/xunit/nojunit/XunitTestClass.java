@@ -14,10 +14,14 @@ public class XunitTestClass {
 
     public void run() {
         for (XunitTestMethod method: testMethodList) {
+            boolean runStatus = true;
             try {
                 method.getMethod().run();
             } catch (RuntimeException e) {
-                method.setRunStatus(false);
+                runStatus = false;
+                method.setErrorMsg(e.getMessage());
+            } finally {
+                method.setRunStatus(runStatus);
             }
         }
     }
